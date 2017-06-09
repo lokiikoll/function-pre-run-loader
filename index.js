@@ -9,7 +9,6 @@ module.exports = function (source, map) {
     const searchFuncRegExp = new RegExp(functionName + '\(.*\)', 'g');
     const func = new Function(functionArgs,functionBody);
     source = source.replace(searchFuncRegExp, rv => {
-      console.log(rv);
       const param = rv.match(/(\'|\").*(\'|\")/)[0].replace(/\'|\"/g, '');
       return func(param);
     })
